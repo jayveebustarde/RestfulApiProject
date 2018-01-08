@@ -11,5 +11,13 @@ namespace Entities
     {
         [Required, Key]
         public Guid Id { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime? LastUpdatedDate { get; set; }
+
+        public string LastUpdatedBy { get; set; }
+
+        public string CreatedBy { get; set; }
     }
 }

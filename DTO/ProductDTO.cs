@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace DTO
 {
-    public class Product : BaseEntity
+    public class ProductDTO : BaseDTO
     {
         public string Name { get; set; }
 
@@ -16,13 +16,9 @@ namespace Entities
 
         public Guid ProductTypeId { get; set; }
 
-        #region Navigation
-        public virtual ProductType ProductType { get; set; }
 
-        public ICollection<Variation> Variations { get; set; }
+        public ProductTypeDTO ProductType { get; set; }
 
-        public ICollection<ProductDiscount> ProductDiscounts { get; set; }
-
-        #endregion
+        public List<VariationDTO> Variations { get; set; }
     }
 }

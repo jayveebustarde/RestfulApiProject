@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace DTO
 {
-    public class Discount : BaseEntity
+    public class DiscountDTO : BaseDTO
     {
         public string Title { get; set; }
 
@@ -17,9 +17,5 @@ namespace Entities
         public DateTime EndDate { get; set; }
 
         public string Details { get; set; }
-
-        #region Navigation
-        public ICollection<ProductDiscount> ProductDiscounts { get; set; }
-        #endregion
     }
 }

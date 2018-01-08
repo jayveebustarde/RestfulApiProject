@@ -4,23 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace DTO
 {
-    public class ProductDiscount : BaseEntity
+    public class ProductDiscountDTO : BaseDTO
     {
         public Guid ProductId { get; set; }
 
         public Guid DiscountId { get; set; }
 
         public Guid? VariationId { get; set; }
+        
+        public ProductDTO Product { get; set; }
 
-        #region Navigation
-        public Product Product { get; set; }
+        public DiscountDTO Discount { get; set; }
 
-        public Discount Discount { get; set; }
-
-        public Variation Variation { get; set; }
-
-        #endregion
+        public VariationDTO Variation { get; set; }
     }
 }
