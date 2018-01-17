@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class ProductType : BaseEntity
+    public interface IEntity
     {
-        public string Type { get; set; }
+        Guid Id { get; set; }
     }
 }

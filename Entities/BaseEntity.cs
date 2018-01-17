@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class BaseEntity
+    public class BaseEntity : IEntity
     {
         [Required, Key]
         public Guid Id { get; set; }

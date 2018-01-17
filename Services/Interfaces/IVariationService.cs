@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Services
 {
-    public class ProductType : BaseEntity
+    public interface IVariationService : IBaseService<VariationDTO>
     {
-        public string Type { get; set; }
+
     }
 }
