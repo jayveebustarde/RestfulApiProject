@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +12,40 @@ namespace RestApiProject.Controllers
     public class BaseController<T> : ApiController
         where T: BaseDTO
     {
+        protected internal IBaseService<T> _service;
 
-        public IEnumerable<string> Get()
+        public BaseController(IBaseService<T> service)
         {
-            return new string[] { "value1", "value2" };
+            _service = service;
+        }
+
+        public IEnumerable<T> Get()
+        {
+            return _service.GetAll();
         }
 
 
-        public string Get(Guid id)
+        public T Get(Guid id)
         {
-            return "value";
+            return _service.GetById(id);
         }
 
 
-        public void Post([FromBody]string value)
+        public void Post([FromBody]T model)
         {
+            _service.Create(model);
         }
 
 
-        public void Put(Guid id, [FromBody]string value)
+        public void Put(Guid id, [FromBody]T model)
         {
+            _service.Update(model);
         }
 
 
         public void Delete(Guid id)
         {
+            _service.Delete(id);
         }
     }
 }
