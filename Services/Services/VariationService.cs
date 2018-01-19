@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 
-namespace Services.Services
+namespace Services
 {
     public class VariationService : IVariationService
     {

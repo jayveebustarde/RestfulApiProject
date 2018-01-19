@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DTO;
 using Context;
 
-namespace Services.Services
+namespace Services
 {
     public class ProductDiscountService : IProductDiscountService
     {
