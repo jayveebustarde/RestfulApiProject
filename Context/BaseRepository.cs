@@ -18,14 +18,16 @@ namespace DataAccess
         public BaseRepository()
         {
             this.Context = new DirectoryContext();
+            this.DbSet = Context.Set<T>();
         }
 
         public BaseRepository(DirectoryContext context)
         {
             this.Context = context;
+            this.DbSet = Context.Set<T>();
         }
 
-        public virtual IEnumerable<T> GetAll => DbSet.ToList();
+        public virtual IEnumerable<T> GetAll () => DbSet.ToList();
         public virtual IEnumerable<T> FindAll(Expression<Func<T, bool>> predicate) => DbSet.Where(predicate).ToList();
         public virtual T GetById(Guid id) => DbSet.Find(id);
         public virtual void Insert(T entityToInsert) => DbSet.Add(entityToInsert);

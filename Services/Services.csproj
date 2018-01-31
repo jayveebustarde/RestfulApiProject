@@ -62,6 +62,10 @@
       <Project>{B7F95FF4-DE18-4D40-97DA-F65072F6C193}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{52602170-92A8-47B4-BF68-794D3004AE9C}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

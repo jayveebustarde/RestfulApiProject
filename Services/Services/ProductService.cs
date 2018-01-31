@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using Context;
+using Entities;
 
 namespace Services
 {
@@ -29,7 +30,29 @@ namespace Services
 
         public IEnumerable<ProductDTO> GetAll()
         {
-            throw new NotImplementedException();
+            List<ProductDTO> products = new List<ProductDTO>(); 
+
+            try
+            {
+                using (_unitOfWork)
+                {
+                    var productEntities = _unitOfWork.ProductRepository.GetAll();
+
+                    if (productEntities.Any())
+                    {
+                        foreach (Product product in productEntities)
+                        {
+                            products.Add(MapProductEntityToDTO(product));
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            return products;
         }
 
         public ProductDTO GetById(Guid id)
@@ -40,6 +63,23 @@ namespace Services
         public bool Update(ProductDTO objectDTO)
         {
             throw new NotImplementedException();
+        }
+
+        private ProductDTO MapProductEntityToDTO(Product product)
+        {
+            if(product != null)
+            {
+                return new ProductDTO
+                {
+                    Id = product.Id,
+                    Description = product.Description,
+                    Name = product.Name,
+                    ProductTypeId = product.ProductTypeId,
+                    RegularPrice = product.RegularPrice
+                };
+            }
+
+            return null;
         }
     }
 }

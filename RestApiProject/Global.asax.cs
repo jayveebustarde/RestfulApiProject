@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Autofac.Integration.WebApi;
+using Context;
 using DTO;
 using Services;
 using System;
@@ -27,16 +29,40 @@ namespace RestApiProject
 
         private void ConfigureAutofac()
         {
-
             var builder = new ContainerBuilder();
+            var config = GlobalConfiguration.Configuration;
 
-            builder.RegisterType<ProductService>().As<IBaseService<ProductDTO>>();
-            builder.RegisterType<ProductTypeService>().As<IBaseService<ProductTypeDTO>>();
-            builder.RegisterType<ProductDiscountService>().As<IBaseService<ProductDiscountDTO>>();
-            builder.RegisterType<DiscountService>().As<IBaseService<DiscountDTO>>();
-            builder.RegisterType<VariationService>().As<IBaseService<VariationDTO>>();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+
+            //builder.RegisterInstance<IBaseService<ProductDTO>>(new ProductService);
+
+            builder.RegisterType<DirectoryUnitOfwork>()
+                .As<IUnitOfWork>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ProductService>()
+                .As<IBaseService<ProductDTO>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ProductTypeService>()
+                .As<IBaseService<ProductTypeDTO>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ProductDiscountService>()
+                .As<IBaseService<ProductDiscountDTO>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<DiscountService>()
+                .As<IBaseService<DiscountDTO>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<VariationService>()
+                .As<IBaseService<VariationDTO>>()
+                .InstancePerRequest();
 
             var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
         }
     }
