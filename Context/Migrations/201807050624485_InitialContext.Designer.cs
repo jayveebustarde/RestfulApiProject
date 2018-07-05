@@ -7,13 +7,13 @@ namespace Context.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddInitalContext : IMigrationMetadata
+    public sealed partial class InitialContext : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddInitalContext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialContext));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801181107173_AddInitalContext"; }
+            get { return "201807050624485_InitialContext"; }
         }
         
         string IMigrationMetadata.Source

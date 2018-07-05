@@ -15,5 +15,9 @@ namespace Context
         BaseRepository<Discount> DiscountRepository { get; set; }
         BaseRepository<ProductDiscount> ProductDiscountRepository { get; set; }
         BaseRepository<Product> ProductRepository { get; set; }
+
+        int SaveChanges(string userId);
+
+        Task<int> SaveChangesAsync(string userId);
     }
 }

@@ -53,16 +53,18 @@
     <Compile Include="DirectoryContext.cs" />
     <Compile Include="DirectoryUnitOfwork.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201801181107173_AddInitalContext.cs" />
-    <Compile Include="Migrations\201801181107173_AddInitalContext.Designer.cs">
-      <DependentUpon>201801181107173_AddInitalContext.cs</DependentUpon>
+    <Compile Include="Migrations\201807050624485_InitialContext.cs" />
+    <Compile Include="Migrations\201807050624485_InitialContext.Designer.cs">
+      <DependentUpon>201807050624485_InitialContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -72,8 +74,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801181107173_AddInitalContext.resx">
-      <DependentUpon>201801181107173_AddInitalContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807050624485_InitialContext.resx">
+      <DependentUpon>201807050624485_InitialContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

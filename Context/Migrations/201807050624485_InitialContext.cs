@@ -3,7 +3,7 @@ namespace Context.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddInitalContext : DbMigration
+    public partial class InitialContext : DbMigration
     {
         public override void Up()
         {

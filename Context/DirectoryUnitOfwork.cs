@@ -108,5 +108,9 @@ namespace Context
         {
             Dispose(true);
         }
+
+        public int SaveChanges(string user) => _context.SaveChanges(user);
+
+        public Task<int> SaveChangesAsync(string user) => _context.SaveChangesAsync(user);
     }
 }

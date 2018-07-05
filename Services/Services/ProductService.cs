@@ -20,7 +20,22 @@ namespace Services
 
         public Guid Create(ProductDTO objectDTO)
         {
-            throw new NotImplementedException();
+            Product product = MapProductDTOToEntity(objectDTO);
+            if (product == null) return Guid.Empty;
+            try
+            {
+                using (_unitOfWork)
+                {
+                    product.Id = Guid.NewGuid();
+                    _unitOfWork.ProductRepository.Insert(product);
+                    _unitOfWork.SaveChanges("Lorem Ipsum");
+                }
+            }
+            catch(Exception e)
+            {
+
+            }
+            return product.Id;
         }
 
         public bool Delete(Guid id)
@@ -78,7 +93,21 @@ namespace Services
                     RegularPrice = product.RegularPrice
                 };
             }
-
+            return null;
+        }
+        
+        private Product MapProductDTOToEntity(ProductDTO product)
+        {
+            if (product != null)
+            {
+                return new Product
+                {
+                    Description = product.Description,
+                    Name = product.Name,
+                    ProductTypeId = product.ProductTypeId,
+                    RegularPrice = product.RegularPrice
+                };
+            }
             return null;
         }
     }

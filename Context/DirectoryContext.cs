@@ -10,7 +10,7 @@ namespace DataAccess
 {
     public class DirectoryContext : DbContext
     {
-        public DirectoryContext() : base()
+        public DirectoryContext() : base("RestDirectory")
         {
             
         }
